@@ -30,7 +30,7 @@ namespace NMF.Expressions
         /// </summary>
         public void CommitTransaction()
         {
-            if (changeListener.Count > 0 || changedNodes.Count > 0)
+            while (changeListener.Count > 0 || changedNodes.Count > 0)
             {
                 var nodes = new List<INotifiable>(changeListener.Count + changedNodes.Count);
                 nodes.AddRange(changedNodes);
